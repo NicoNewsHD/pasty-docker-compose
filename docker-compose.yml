@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  pasty:
+    image: ghcr.io/lus/pasty:latest
+    container_name: pasty
+    ports:
+      - 1025:8080
+    environment:
+      - PASTY_AUTODELETE=true
+      - PASTY_ID_LENGTH=4
+      - PASTY_ID_CHARACTERS=abcdefghjkmnopqrstuvwxyz0123456789
+      - PASTY_MODIFICATION_TOKEN_MASTER=MySuperSecureAdminKey
+      - PASTY_MODIFICATION_TOKEN_LENGTH=8
+      - PASTY_MODIFICATION_TOKEN_CHARACTERS=abcdefghjkmnopqrstuvwxyz0123456789
+      - PASTY_LENGTH_CAP=69420
+      - PASTY_AUTODELETE_LIFETIME=720h
+      - PASTY_AUTODELETE_TASK_INTERVAL=10m
+    volumes:
+      - ./data:/root/data
